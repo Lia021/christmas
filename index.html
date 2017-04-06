@@ -50,9 +50,15 @@
     <a-scene altspace=fullspace:true sync-system="author: bookgirl; app: christmas">
     <a-assets></a-assets>
     
+      <!-- Basic plane. -->
+  <a-box color="white"position='1 11.60 -2' opacity="0" depth="0.01" height="14" width="17" rotation="90 0 0" n-mesh-collider="type: environment; convex: false" side="double"></a-box>
+      
+   <!--Space-->
+    <a-entity n-billboard n-text="fontSize: 3; text:Lia-Space" position="2 14.05 0"></a-entity>
+
     <!--portal-->
      
-	<a-entity position='2 0 0' rotation='0 -90 0' n-portal='targetSpace: experience-space-621989866128802364'></a-entity>
+	<a-entity position='2 11.60 0' rotation='0 -90 0' n-portal='targetSpace: event-646459995168179056'></a-entity>
     
     <!--Winter Forest-->
     <a-sky radius="550" src="images/5RR7WhR.jpg" segments-width="10" segments-height="6">
