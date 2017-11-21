@@ -48,25 +48,26 @@
 
   <body>
     <a-scene altspace=fullspace:true sync-system="author: bookgirl; app: christmas">
-    <a-assets></a-assets>
-    
-      <!-- Basic plane. -->
-  <a-box color="white"position='1 11.60 -2' opacity="0" depth="0.01" height="14" width="17" rotation="90 0 0" n-mesh-collider="type: environment; convex: false" side="double"></a-box>
-      
-   <!--Space-->
-    <a-entity n-billboard n-text="fontSize: 3; text:Lia-Space" position="2 14.05 0"></a-entity>
+    <a-assets>
+      <a-asset-item id="tree" src="https://rawgit.com/Lia021/christmas/master/christmas-tree/Christmas-tree.dae"></a-asset-item>
 
-    <!--portal-->
-     
-	<a-entity position='2 11.60 0' rotation='0 -90 0' n-portal='targetSpace: event-646459995168179056'></a-entity>
+
+    </a-assets>
     
+    <!--christmas tree-->
+ 
+    <a-entity position="-2.65 0.40 -6" scale="1.50 1.50 1.50" n-mesh-collider="type: environment; convex: false" collada-model="#tree"></a-entity>
+  
+    <!--christmas tree2-->
+ 
+    <a-entity position="0 0.05 9" scale="1.50 1.50 1.50" n-mesh-collider="type: environment; convex: false" collada-model="#tree"></a-entity>
+         
+
     <!--Winter Forest-->
     <a-sky radius="550" src="images/5RR7WhR.jpg" segments-width="10" segments-height="6">
     </a-sky>
     <!--Christmas Tree-->
-    <a-cone position="0 4 9" segments-height="1" segments-radial="10" color="green" radius-bottom="1.5" height="6" radius-top="0"></a-cone>
-    <a-box position="0 0.67 9" src="images/ESUSyjG.jpg" height="2" width="1"></a-box>
-    <a-ring position="0 8.5 9" segments-phi="1" segments-theta="20" src="images/QPyq0Nw.jpg" radius-inner="1" radius-outer="1.5" side="double">
+      <a-ring position="0 6.70 9" segments-phi="1" segments-theta="20" src="images/QPyq0Nw.jpg" radius-inner="1" radius-outer="1.5" side="double">
       <a-animation attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
     </a-ring>
     <!--Snow Ground-->
@@ -131,9 +132,7 @@
     <!--my hidden photo-->
     <a-box position="10.60 1 0" src="images/QFO46kc.jpg" depth="0.3" height="0.3" width="0,3" rotation="3 0 0"></a-box>
     <!--chrismas tree 2-->
-    <a-cone position="-2.65 3.75 -6" segments-height="1" segments-radial="10" color="green" radius-bottom="1.4" height="5" radius-top="0"></a-cone>
-    <a-box position="-2.65 0.67 -6" src="images/ESUSyjG.jpg" height="1" width="1"></a-box>
-    <a-ring position="-2.55 7.5 -6" segments-phi="1" segments-theta="20" src="images/QPyq0Nw.jpg" radius-inner="1" radius-outer="1.5" side="double">
+      <a-ring position="-2.55 7.06 -6" segments-phi="1" segments-theta="20" src="images/QPyq0Nw.jpg" radius-inner="1" radius-outer="1.5" side="double">
       <a-animation attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
     </a-ring>
     <!--Christmas Presents 2-->
