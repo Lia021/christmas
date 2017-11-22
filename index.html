@@ -50,6 +50,10 @@
     <a-scene altspace=fullspace:true sync-system="author: bookgirl; app: christmas">
     <a-assets>
       <a-asset-item id="tree" src="https://rawgit.com/Lia021/christmas/master/christmas-tree/Christmas-tree.dae"></a-asset-item>
+      <a-asset-item id="star" src="https://rawgit.com/Lia021/christmas/master/star/star.dae"></a-asset-item>
+      
+
+
 
 
     </a-assets>
@@ -63,15 +67,20 @@
     <a-entity position="0 0.05 9" scale="1.50 1.50 1.50" n-mesh-collider="type: environment; convex: false" collada-model="#tree"></a-entity>
          
 
-    <a-assets></a-assets>
+     <!--star-->
+ 
+     <a-entity position="0 6.20 9" scale="1.50 1.50 1.50" n-mesh-collider="type: environment; convex: false" collada-model="#star"><a-animation attribute="rotation" dur="35000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation></a-entity>
+     
+    <!--star2-->
+ 
+    <a-entity position="-2.66 6.58 -6" scale="1.50 1.50 1.50" n-mesh-collider="type: environment; convex: false" collada-model="#star"><a-animation attribute="rotation" dur="35000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation></a-entity>
+        
+  
     
     <!--Winter Forest-->
     <a-sky radius="550" src="images/5RR7WhR.jpg" segments-width="10" segments-height="6">
     </a-sky>
-    <!--Christmas Tree-->
-      <a-ring position="0 6.70 9" segments-phi="1" segments-theta="20" src="images/QPyq0Nw.jpg" radius-inner="1" radius-outer="1.5" side="double">
-      <a-animation attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
-    </a-ring>
+    
     <!--Snow Ground-->
     <a-box position="-0.98 -0.4 -0.98" src="images/jJBEk3t.jpg" depth="1000" side="double" height="1" width="1000" altspace-cursor-collider="enabled: false"></a-box>
     <!--Christmas Lights-->
@@ -80,9 +89,9 @@
     <a-sphere position="18.0 4.8 -5" src="images/uKJ82vw.jpg" radius="0.89" segments-width="10" segments-height="6"></a-sphere>
     <a-sphere position="21.50 4.8 -10" src="images/Zes4254.jpg" radius="0.89" segments-width="10" segments-height="6"></a-sphere>
     <!--Snowman Body-->
-    <a-sphere position="3 0.5 0" src="images/hTFsqlb.jpg" radius="0.48" segments-height="5" segments-width="10"></a-sphere>
-    <a-sphere position="3 1.1 0" src="images/hTFsqlb.jpg" radius="0.40" segments-height="5" segments-width="10"></a-sphere>
-    <a-cone position="3 2.24 -0" src="images/pGEsHZN.jpg" segments-height="1" segments-radial="10" radius-bottom="0.2" height="1" radius-top="0" attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear">
+    <a-sphere position="3 0.60 0" src="images/hTFsqlb.jpg" radius="0.48" segments-height="5" segments-width="10"></a-sphere>
+    <a-sphere position="3 1.27 0" src="images/hTFsqlb.jpg" radius="0.40" segments-height="5" segments-width="10"></a-sphere>
+    <a-cone position="3 2.37 -0" src="images/pGEsHZN.jpg" segments-height="1" segments-radial="10" radius-bottom="0.2" height="1" radius-top="0" attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear">
     </a-cone>
     <!--Christmas Gifts-->
     <a-box position="-9 1 0" src="images/BIwvkqr.jpg" height="2" width="1" side="double"></a-box>
@@ -133,10 +142,7 @@
     <a-image position="3 1.50 -8.8" src="images/auAldvg.jpg" side="front"></a-image>
     <!--my hidden photo-->
     <a-box position="10.60 1 0" src="images/QFO46kc.jpg" depth="0.3" height="0.3" width="0,3" rotation="3 0 0"></a-box>
-    <!--chrismas tree 2-->
-      <a-ring position="-2.55 7.06 -6" segments-phi="1" segments-theta="20" src="images/QPyq0Nw.jpg" radius-inner="1" radius-outer="1.5" side="double">
-      <a-animation attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
-    </a-ring>
+       
     <!--Christmas Presents 2-->
     <a-box position="-2.30  0.7  -4.55" Src="images/rYuJydS.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
     <a-box position="-1.90 0.7  -4.87" Src="images/XDirDzV.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
