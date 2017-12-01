@@ -25,22 +25,13 @@
   <body>
     <a-scene altspace=fullspace:true sync-system="author: bookgirl; app: christmas">
     <a-assets>
-      <a-asset-item id="tree" src="https://rawgit.com/Lia021/christmas/master/christmas-tree/Christmas-tree2.dae"></a-asset-item>
-      <a-asset-item id="star" src="https://rawgit.com/Lia021/christmas/master/star/star.dae"></a-asset-item>
+    <a-asset-item id="star" src="https://rawgit.com/Lia021/christmas/master/star/star.dae"></a-asset-item>
       
 
 
     </a-assets>
     
-    <!--christmas tree-->
- 
-    <a-entity position="-2.65 0.40 -6" scale="1.50 1.50 1.50" n-mesh-collider="type: environment; convex: false" collada-model="#tree"></a-entity>
   
-    <!--christmas tree2-->
- 
-    <a-entity position="0 0.05 9" scale="1.50 1.50 1.50" n-mesh-collider="type: environment; convex: false" collada-model="#tree"></a-entity>
-         
-
      <!--star-->
  
      <a-entity position="0 6.20 9" scale="1.50 1.50 1.50" n-mesh-collider="type: environment; convex: false" collada-model="#star"><a-animation attribute="rotation" dur="35000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation></a-entity>
