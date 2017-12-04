@@ -25,30 +25,56 @@
   <body>
     <a-scene altspace=fullspace:true sync-system="author: bookgirl; app: christmas">
     <a-assets>
-    <a-asset-item id="star" src="https://rawgit.com/Lia021/christmas/master/star/star.dae"></a-asset-item>
-    <a-asset-item id="tree" src="https://rawgit.com/Lia021/christmas/master/christmas-tree/Christmas-tree.dae"></a-asset-item> 
+      <a-asset-item id="tree" src="https://rawgit.com/Lia021/christmas/master/christmas-tree/Christmas-tree.dae"></a-asset-item>
+      <a-asset-item id="star" src="https://rawgit.com/Lia021/christmas/master/star/star.dae"></a-asset-item>
+      <a-asset-item id="ben-shoo" src="https://rawgit.com/Lia021/christmas/master/present/ben-shoo.dae"></a-asset-item>
+      <a-asset-item id="evil" src="https://rawgit.com/Lia021/christmas/master/present/evil.dae"></a-asset-item>
+      <a-asset-item id="katherine" src="https://rawgit.com/Lia021/christmas/master/present/katherine.dae"></a-asset-item>
+      <a-asset-item id="genesis" src="https://rawgit.com/Lia021/christmas/master/present/genesis.dae"></a-asset-item>
+      <a-asset-item id="riche" src="https://rawgit.com/Lia021/christmas/master/present/riche.dae"></a-asset-item>
+      
+
 
 
     </a-assets>
     
-  
-     <!--star-->
+   <!--christmas tree-->
  
-     <a-entity position="0 6.20 9" scale="1.50 1.50 1.50" n-mesh-collider="type: environment; convex: false" collada-model="#star"><a-animation attribute="rotation" dur="35000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation></a-entity>
+   <a-entity position="-2.65 0.40 -6" scale="1.50 1.50 1.50" n-mesh-collider="type: environment; convex: false" collada-model="#tree"></a-entity>  
+  
+    <!--christmas tree2-->
+ 
+    <a-entity position="0 0.05 9" scale="1.50 1.50 1.50" collada-model="#tree"></a-entity>
+         
+
+    <!--star-->
+ 
+    <a-entity position="0 6.20 9" scale="1.50 1.50 1.50" n-mesh-collider="type: environment; convex: false" collada-model="#star"><a-animation attribute="rotation" dur="35000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation></a-entity>
      
     <!--star2-->
  
     <a-entity position="-2.66 6.58 -6" scale="1.50 1.50 1.50" n-mesh-collider="type: environment; convex: false" collada-model="#star"><a-animation attribute="rotation" dur="35000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation></a-entity>
-     
-     <!--christmas tree-->
+        
+   <!--ben-shoo-->
  
-     <a-entity position="-2.65 0.40 -6" scale="1.50 1.50 1.50" n-mesh-collider="type: environment; convex: false" collada-model="#tree"></a-entity>
+   <a-entity position="-2.30  0.45  -4.55" scale="1 1 1" n-mesh-collider="type: environment; convex: false" collada-model="#ben-shoo"></a-entity>
+   
+   <!--evil-->
+ 
+   <a-entity position="-1.90 0.40  -4.87" scale="1.90 1.90 1.90" n-mesh-collider="type: environment; convex: false" collada-model="#evil"></a-entity>
+      
+   <!--katherine-->
+ 
+   <a-entity position="-1.50 0.40  -5.20" scale="1.10 1.10 1.10" n-mesh-collider="type: environment; convex: false" collada-model="#katherine"></a-entity>
+   
+   <!--genesis-->
+ 
+   <a-entity position="-1.20 0.40  -5.57" scale="1.70 1.70 1.70" n-mesh-collider="type: environment; convex: false" collada-model="#genesis"></a-entity>
     
-    <!--christmas tree2-->
+   <!--riche-->
  
-    <a-entity position="0 0.05 9" scale="1.50 1.50 1.50" n-mesh-collider="type: environment; convex: false" collada-model="#tree"></a-entity>
-          
-
+   <a-entity position="-1.20 0.40  -5.97" scale="0.95 0.95 0.95" n-mesh-collider="type: environment; convex: false" collada-model="#riche"></a-entity>
+   
     
     <!--Winter Forest-->
     <a-sky radius="550" src="images/5RR7WhR.jpg" segments-width="10" segments-height="6">
@@ -88,14 +114,10 @@
     <a-box position="12 0.75 20" src="images/XV6zhrh.jpg" depth="0.2" height="0.2" width="0.2"></a-box>
     <a-box position="-11 0.77 -9" src="images/u3oCsGP.jpg" depth="0.2" height="0.2" width="0.2"></a-box>
     <a-box position="-9 0.75 -0.20" src="images/HjueoEI.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
-    <a-box position="0 0.75 9" src="images/Hukt24D.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
+    <a-box position="0 1.50 9" src="images/Hukt24D.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
     <a-box position="9.30 0.75 -9" src="images/B2rWkfS.jpg" depth="0.3" height="0.3" width="0.3" rotation="0 -90 0"></a-box>
     <a-box position="-14 0.75 7.60" src="images/0jKK5mo.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
-    <!--Christmas Selfibooth-->
-    <a-image position="-15 0.80 -17" src="images/vK3ChvZ.jpg" height="1" width="1" rotation="-19 0 0"></a-image>
-    <a-image position="-11 1.0 -19" src="images/3sBJKBN.jpg" height="1" width="1" rotation="-19 0 0"></a-image>
-    <a-image position="-13 1.1 -16" src="images/pO4Smp3.jpg" height="1" width="1" rotation="-19 0 0"></a-image>
-    <!--Mystery Boxes 2-->
+   <!--Mystery Boxes 2-->
     <a-box position="-0.15 0.69 -3" src="images/0ZPW8gf.jpg" depth="0.4" height="0.4" width="0.4" rotation="0 -90 0"></a-box>
     <a-box position="10 7.51 -8" src="images/J0NcVPr.jpg.jpg" depth="0.4" height="0.4" width="0.4" rotation="0 90 0"></a-box>
     <a-box position="-5.80 0.6 1.96" src="images/MRUe8eT.jpg" depth="0.3" height="0.3" width="0.3" rotation="0 -90 0"></a-box>
@@ -117,26 +139,18 @@
     <a-box position="10.60 1 0" src="images/QFO46kc.jpg" depth="0.3" height="0.3" width="0,3" rotation="3 0 0"></a-box>
        
     <!--Christmas Presents 2-->
-    <a-box position="-2.30  0.7  -4.55" Src="images/rYuJydS.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
-    <a-box position="-1.90 0.7  -4.87" Src="images/XDirDzV.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
-    <a-box position="-1.50 0.7  -5.20" Src="images/t2qBfuY.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
-    <a-box position="-1.20 0.7  -5.55" Src="images/AWMrR9l.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
-    <a-box position="-1.20 0.7  -5.95" Src="images/LWjqDEb.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
-    <a-box position="-1.20 0.7  -6.36" Src="images/cMKds6Y.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
+  <a-box position="-1.20 0.7  -6.36" Src="images/cMKds6Y.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
     <a-box position="-1.50 0.7  -6.70" Src="images/l2iDFnp.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
     <a-box position="-1.80 0.7  -7.10" Src="images/rJlaajb.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
     <a-box position="-2.25 0.7  -7.39" Src="images/lUKDvmp.jpg" depth="0.3" height="0.3" width="0.3"></a-box>
     <!--christmas deciration-->
     <a-circle position="-5.40 4.50 0.5" segments="16" src="images/wLGl0NP.jpg" radius="1" theta-length="360" rotation="0 -90 0" side="double"></a-circle>
     <a-circle position="-5.60 4.50 0.5" segments="16" src="images/wLGl0NP.jpg" radius="1" theta-length="360" rotation="0 -90 0" side="double"></a-circle>
-    <!--snowman body 2-->
-    <a-sphere position="4 0.5 -6" src="images/hTFsqlb.jpg" radius="0.48" segments-height="5" segments-width="10"></a-sphere>
-    <a-sphere position="4 1.0 -6" src="images/hTFsqlb.jpg" radius="0.40" segments-height="5" segments-width="10"></a-sphere>
-    <a-cone position="4 2.15 -6" segments-height="1" segments-radial="10" src="images/pGEsHZN.jpg" radius-bottom="0.2" height="1" radius-top="0" rotation="0 -90 0" attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear">
-    </a-cone>
-
+   
   </a-scene>
 </body>
 
 </html>
+
+
 
