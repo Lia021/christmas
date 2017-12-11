@@ -21,6 +21,139 @@
           }
         })
   </script>
+<script>
+  // Generates Snow Fall Effect
+  SnowFallEffect = function(config) {
+      this.config = config || {};
+      this.type = 'SnowFallEffect';
+
+      // Helper Function To Generate Random Numbers
+      this.getRandom = function(min, max) {
+          return Math.random() * (max - min) + min;
+      }
+
+      this.awake = function(o, s) {
+          this.object3d = o;
+          this.scene = s;
+          this.materials = [];
+          this.snowflakes = [];
+
+          this.snowfallVolumeSize = 5;
+          this.config.particleScale = this.config.particleScale || 0.01;
+          this.config.particleCount = this.config.particleCount || 100;
+          this.config.particleFallSpeed = this.config.particleFallSpeed || 1;
+          this.config.particleDriftSpeed = this.config.particleDriftSpeed || 1.8;
+          this.config.particleRotationSpeed = this.config.particleRotationSpeed || 15;
+
+          this.texture = this.config.particleTextureUrl ? new THREE.Texture({ src: altspaceutil.getAbsoluteURL(this.config.particleTextureUrl) }) : null;
+          this.geometry = new THREE.PlaneGeometry(1, 1);
+
+          for(var i = 0; i < 3; ++i) {
+              var material = new THREE.MeshBasicMaterial({ map: this.texture, side: THREE.DoubleSide, transparent: (this.texture !== undefined), opacity: (this.texture !== undefined) ? this.getRandom(0.3 - (i * 0.05), 1.0 - (i * 0.2)) : 1 });
+              material.color.r = this.getRandom(0.75, 1 - ((i + 1) * 0.025));
+              this.materials.push(material);
+          }
+
+          if(this.config.occluders && this.config.occluders.length > 0) {
+              this.snowflakeBoundingBox = new THREE.Box3();
+              this.occluderBoundingBox = new THREE.Box3();
+          }
+      }
+
+      this.update = function(deltaTime) {
+          if(!this.avatarhead) {
+              altspace.getThreeJSTrackingSkeleton().then((function(_skeleton) {
+                  this.skeleton = _skeleton;
+                  this.object3d.add(this.skeleton);
+                  this.avatarhead = this.skeleton.getJoint('Head');
+
+                  for(var i = 0; i < this.config.particleCount; ++i) {
+                      var snowflake = new THREE.Mesh(this.geometry, this.materials[Math.floor(this.getRandom(0, this.materials.length - 1))]);
+                      snowflake.userData.altspace = { collider: { enabled: false } };
+
+                      // Set Up Snowflake Animation Properties
+                      snowflake.userData.fallSpeed = this.config.particleFallSpeed * 0.001 * this.getRandom(0.4, 0.9);
+                      snowflake.userData.driftSpeed = this.config.particleDriftSpeed * 0.001 * this.getRandom(-0.15, 0.15);
+                      snowflake.userData.rotationSpeed  = this.config.particleRotationSpeed * 0.001 * this.getRandom(0.01, 0.1);
+
+                      // Randomize Snowflake Position
+                      snowflake.scale.setScalar(this.config.particleScale);
+                      snowflake.position.set(this.avatarhead.position.x - this.scene.position.x + this.getRandom(-this.snowfallVolumeSize, this.snowfallVolumeSize), this.avatarhead.position.y - this.scene.position.y + this.getRandom(-this.snowfallVolumeSize, this.snowfallVolumeSize), this.avatarhead.position.z - this.scene.position.z + this.getRandom(-this.snowfallVolumeSize, this.snowfallVolumeSize));
+
+                      this.snowflakes.push(snowflake);
+                      this.object3d.add(snowflake);
+                  }
+              }).bind(this));
+          }
+
+          if(this.avatarhead) {
+              for(var snowflake of this.snowflakes) {
+                  var delta = { x: this.avatarhead.position.x - this.scene.position.x, y: this.avatarhead.position.y - this.scene.position.y, z: this.avatarhead.position.z - this.scene.position.z };
+                  var fallThreshold = this.snowfallVolumeSize * 0.8;
+                  var shiftThreshold = this.snowfallVolumeSize * 0.6;
+
+                  // Shift Snow Volume To Avatar Position
+                  if(snowflake.position.x < (delta.x - shiftThreshold) || snowflake.position.x > (delta.x + shiftThreshold) || snowflake.position.z < (delta.z - shiftThreshold) || snowflake.position.z > (delta.z + shiftThreshold)) {
+                      snowflake.position.x = delta.x + this.getRandom(-this.snowfallVolumeSize, this.snowfallVolumeSize);
+                      snowflake.position.z = delta.z + this.getRandom(-this.snowfallVolumeSize, this.snowfallVolumeSize);
+                  }
+
+                  if(snowflake.position.y < (delta.y - fallThreshold)) snowflake.position.y = delta.y + this.snowfallVolumeSize;
+
+                  // Fall
+                  snowflake.position.y -= snowflake.userData.fallSpeed * deltaTime;
+
+                  // Drift
+                  var cos = snowflake.userData.driftSpeed * deltaTime;
+                  snowflake.position.z += cos;
+                  snowflake.position.x += cos;
+
+                  // Rotation
+                  snowflake.rotation.y += snowflake.userData.rotationSpeed * deltaTime;
+
+                  snowflake.visible = true;
+
+                  if(this.config.occluders && this.config.occluders.length > 0) {
+                      this.snowflakeBoundingBox.setFromObject(snowflake);
+
+                      for(var occluder of this.config.occluders) {
+                          this.occluderBoundingBox.setFromObject(occluder);
+                          if(this.snowflakeBoundingBox.intersectsBox(this.occluderBoundingBox)) {
+                              if(snowflake.parent) snowflake.parent.remove(snowflake);
+                              snowflake.visible = false;
+                              break;
+                          }
+                      }
+                  }
+
+                  if(snowflake.visible && !snowflake.parent) this.object3d.add(snowflake);
+              }
+          }
+      }
+
+      this.dispose = function() {
+          if(this.object3d) {
+              for(var snowflake of this.snowflakes) this.object3d.remove(snowflake);
+              if(this.skeleton) this.object3d.remove(this.skeleton);
+          }
+      }
+  }
+
+  if(window.AFRAME) {
+      if(AFRAME.components['snowfall-effect']) delete AFRAME.components['snowfall-effect'];
+
+      AFRAME.registerComponent('snowfall-effect', {
+          init: function() {
+              var isMobileDevice = /mobile/i.test(navigator.userAgent);
+              this.behavior = new SnowFallEffect({ particleScale: isMobileDevice ? 0.005 : 0.01, particleCount: isMobileDevice ? 90 : 500, particleTextureUrl: isMobileDevice ? null : 'snowflake.png' })
+              this.sceneEl.object3D.addBehavior(this.behavior);
+          },
+          remove: function() {
+              if(this.behavior) this.sceneEl.object3D.removeBehavior(this.behavior);
+          }
+      });
+  }
+</script>  
 
   <body>
     <a-scene altspace=fullspace:true sync-system="author: bookgirl; app: christmas">
@@ -144,12 +277,13 @@
     <a-box position="-15 17 -18" src="images/cjfskyF.jpg" depth="0.3" height="0.3" width="0.3" rotation="0 90 0"></a-box>
     <a-box position="-22 16 18" src="images/3r5hHZA.jpg" depth="0.3" height="0.3" width="0.3" rotation="0 90 0"></a-box>
     <a-box position="21 23 -25" src="images/IBJ8xcY.jpg" depth="0.3" height="0.3" width="0.3" rotation="0 90 0"></a-box>
-    <!--my hidden photo-->
-    <a-box position="10.60 1 0" src="images/QFO46kc.jpg" depth="0.3" height="0.3" width="0,3" rotation="3 0 0"></a-box>
-       
+ 
     <!--Christmas Presents 2-->
    <a-box position="-2.25 0.7  -7.39" color="red" depth="0.3" height="0.3" width="0.3"></a-box>
-    
+   
+   
+
+  
   </a-scene>
 </body>
 
