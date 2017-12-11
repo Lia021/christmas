@@ -145,16 +145,15 @@
           if(AFRAME.components['snowfall-effect']) delete AFRAME.components['snowfall-effect'];
    
           AFRAME.registerComponent('snowfall-effect', {
-              init: function() {
-                  var isMobileDevice = /mobile/i.test(navigator.userAgent);
-                  this.behavior = new SnowFallEffect({ particleScale: isMobileDevice ? 0.005 : 0.01, particleCount: isMobileDevice ? 90 : 500, particleTextureUrl: isMobileDevice ? null : 'snowflake.png' })
-                  this.sceneEl.object3D.addBehavior(this.behavior);
-              },
-              remove: function() {
-                  if(this.behavior) this.sceneEl.object3D.removeBehavior(this.behavior);
-              }
-          });
-      }
+            init: function() {
+                var isMobileDevice = /mobile/i.test(navigator.userAgent);
+                this.behavior = new SnowFallEffect({ particleScale: isMobileDevice ? 0.005 : 0.01, particleCount: isMobileDevice ? 90 : 500, particleTextureUrl: isMobileDevice ? null : 'snowflake.png' })
+                this.el.object3D.addBehavior(this.behavior);
+            },
+            remove: function() {
+                if(this.behavior) this.el.object3D.removeBehavior(this.behavior);
+            }
+        });
   </script>
 
   <body>
