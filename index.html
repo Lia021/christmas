@@ -171,6 +171,7 @@
       <a-asset-item id="zarzar" src="https://rawgit.com/Lia021/christmas/master/present/zar-zar.dae"></a-asset-item>
       <a-asset-item id="rage" src="https://rawgit.com/Lia021/christmas/master/present/rage.dae"></a-asset-item>
       <a-asset-item id="snow" src="https://rawgit.com/Lia021/christmas/master/snow/snow2.dae"></a-asset-item>
+      <a-asset-item id="igloo" src="https://rawgit.com/Lia021/christmas/master/igloo/igloo.dae"></a-asset-item>
       
 
 
@@ -190,6 +191,10 @@
  
     <a-entity position="0 0.05 9" scale="1.50 1.50 1.50" collada-model="#tree"></a-entity>
          
+   <!--igloo-->
+
+   <a-entity position="-5 -0.20 13"rotation="0 175 2" scale="4 4 4" n-mesh-collider="type: environment; convex: false" collada-model="#igloo"></a-entity>
+       
 
     <!--star-->
  
@@ -240,9 +245,9 @@
     <a-sphere position="18.0 4.8 -5" src="https://rawgit.com/Lia021/christmas/master/light/purple.jpg" radius="0.89" segments-width="10" segments-height="6"></a-sphere>
     <a-sphere position="21.50 4.8 -10" src="https://rawgit.com/Lia021/christmas/master/light/yellow.jpg" radius="0.89" segments-width="10" segments-height="6"></a-sphere>
     <!--Snowman Body-->
-    <a-sphere position="3 0.60 0" color="white" radius="0.48" segments-height="5" segments-width="10"></a-sphere>
-    <a-sphere position="3 1.27 0" color="white" radius="0.40" segments-height="5" segments-width="10"></a-sphere>
-    <a-cone position="3 2.37 -0" color="red" segments-height="1" segments-radial="10" radius-bottom="0.2" height="1" radius-top="0" attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear">
+    <a-sphere position="-11 0.10 -14" color="white" radius="0.55" segments-height="5" segments-width="10"></a-sphere>
+    <a-sphere position="-11 0.90 -14" color="white" radius="0.40" segments-height="5" segments-width="10"></a-sphere>
+    <a-cone position="-11 1.95 -14" color="red" segments-height="1" segments-radial="10" radius-bottom="0.2" height="1" radius-top="0" attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear">
     </a-cone>
     <!--Christmas Gifts-->
     <a-box position="-9 1 0" src="https://rawgit.com/Lia021/christmas/master/gift/damask-pattern-seamless-background.jpg" height="2" width="1" side="double"></a-box>
