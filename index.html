@@ -172,6 +172,7 @@
       <a-asset-item id="rage" src="https://rawgit.com/Lia021/christmas/master/present/rage.dae"></a-asset-item>
       <a-asset-item id="snow" src="https://rawgit.com/Lia021/christmas/master/snow/snow2.dae"></a-asset-item>
       <a-asset-item id="igloo" src="https://rawgit.com/Lia021/christmas/master/igloo/igloo.dae"></a-asset-item>
+      <a-asset-item id="campfire" src="https://rawgit.com/Lia021/christmas/master/campfire/campfire.dae"></a-asset-item>
       
 
 
@@ -193,8 +194,16 @@
          
    <!--igloo-->
 
-   <a-entity position="-5 -0.20 13"rotation="0 175 2" scale="4 4 4" n-mesh-collider="type: environment; convex: false" collada-model="#igloo"></a-entity>
+   <a-entity position="-5 -0.20 13"rotation="0 175 1" scale="4 4 4" n-mesh-collider="type: environment; convex: false" collada-model="#igloo"></a-entity>
        
+   <!--campfire-->
+
+   <a-entity position="-5 -0.20 13" scale="2 2 2" n-mesh-collider="type: environment; convex: false" collada-model="#campfire"></a-entity>
+   
+    <!--fire-->
+
+  <a-entity n-object='res: effects/fire'position="-5 0 13"></a-entity>
+  
 
     <!--star-->
  
