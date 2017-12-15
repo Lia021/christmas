@@ -156,6 +156,7 @@
         });
     }
 </script>
+ 
 
   <body>
       <a-scene altspace=fullspace:true sync-system="author: bookgirl; app: christmas" snowfall-effect>
@@ -173,16 +174,29 @@
       <a-asset-item id="snow" src="https://rawgit.com/Lia021/christmas/master/snow/snow2.dae"></a-asset-item>
       <a-asset-item id="igloo" src="https://rawgit.com/Lia021/christmas/master/igloo/igloo.dae"></a-asset-item>
       <a-asset-item id="campfire" src="https://rawgit.com/Lia021/christmas/master/campfire/campfire.dae"></a-asset-item>
+      <a-asset-item id="snowmanhead" src="https://rawgit.com/Lia021/christmas/master/snowman%20head/snowmanhead.dae"></a-asset-item>
       
 
+      <a-mixin id="snowmanhead" collada-model="#snowmanhead" collapse-model></a-mixin>
+      
+           <a-mixin id="parent-to-head"scale="1 1 1" position="0 0.24 0.08" rotation="-76 0 0" n-skeleton-parent="part:head;" sync sync-n-skeleton-parent></a-mixin>
+      
 
 
     </a-assets>
 
+    <!--snowmanhead-->
+    <a-entity position="0 2 0"scale="1 1 1"rotation="-90 0 0" mixin="snowmanhead" instantiator="on: click;group: snowmanhead; mixin: snowmanhead parent-to-head"></a-entity>
+    
+    <!--snowmanhead 2-->
+ 
+   <a-entity position="9.26 2.50 4.60" scale="1.80 1.80 1.80" rotation="0 280 0" collada-model="#snowmanhead"></a-entity>  
+   
+
     <!--snow-->
  
    <a-entity position="-2.37 2.82 -5.84" altspace-cursor-collider="enabled: false" collada-model="#snow"></a-entity>  
-   
+
 
    <!--christmas tree-->
  
