@@ -8,20 +8,6 @@
  <script src="https://sdk.altvr.com/libs/altspace.js/2.7.1/altspace.min.js"></script>
  <script src="https://cdn.rawgit.com/NGenesis/altspacevr-behaviors/v0.9.2/js/altspaceutil.min.js"></script>
 
-  <script>
-    altspace.getThreeJSTrackingSkeleton().then(function (skeleton) {
-          window.head = skeleton.getJoint('Head');
-        });
-        AFRAME.registerComponent('altspace-look-at', {
-          init: function () {
-            if (!window.altspace || !altspace.inClient) { return; }
-          },
-          tick: function () {
-            if (!window.head || !this.el.object3D) { return; }
-            this.el.object3D.lookAt(window.head.position); 
-          }
-        })
-  </script>
   
   <script>
     // Generates Snow Fall Effect
@@ -179,7 +165,7 @@
 
       <a-mixin id="snowmanhead" collada-model="#snowmanhead" collapse-model></a-mixin>
       
-           <a-mixin id="parent-to-head"scale="1 1 1" position="0 0.24 0.08" rotation="-76 0 0" n-skeleton-parent="part:head;" sync sync-n-skeleton-parent></a-mixin>
+           <a-mixin id="parent-to-head"scale="3 3 3" position="0 0.24 0.08" rotation="-76 0 0" n-skeleton-parent="part:head;" sync sync-n-skeleton-parent></a-mixin>
       
 
 
